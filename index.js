@@ -6,17 +6,18 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
-app.get("/user/:id", (req, res) => {
-  // const q = req.params; //params로 get하는 방법
-  // console.log(q.id);
-  const q = req.query;
-  console.log(q);
+app.get("/sound/:name", (req, res) => {
+  const { name } = req.params; //value값을 name으로 한번에 넣어줌
 
-  res.send({ userif: q.id });
-});
-
-app.get("/cat", (req, res) => {
-  res.json({ 고양이: "야옹야옹" }); //send로 하는 것과 거의 같은데, json으로 명시적으로 적을 수 있음
+  if (name == "dog") {
+    res.json({ sound: "멍멍" }); //send로 하는 것과 거의 같은데, json으로 명시적으로 적을 수 있음
+  } else if ((name = "cat")) {
+    res.json({ sound: "야옹야옹" });
+  } else if ((name = "pig")) {
+    res.json({ sound: "꿀꿀" });
+  } else {
+    res.json({ sound: "알수없음" });
+  }
 });
 
 app.listen(port, () => {
