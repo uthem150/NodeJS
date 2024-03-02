@@ -7,8 +7,10 @@ app.get("/", function (req, res) {
 });
 
 app.get("/user/:id", (req, res) => {
-  const q = req.params; //params로 get하는 방법
-  console.log(q.id);
+  // const q = req.params; //params로 get하는 방법
+  // console.log(q.id);
+  const q = req.query;
+  console.log(q);
 
   res.send({ userif: q.id });
 });
